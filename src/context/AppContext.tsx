@@ -18,8 +18,10 @@ import type {
   Theme
 } from "../types";
 import { createId } from "../utils/format";
+import { createSafeStorage } from "../utils/safeStorage";
 
 const STORAGE_KEY = "ride2rider-demo-state";
+const demoStorage = createSafeStorage();
 
 type JoinRequestTarget = "parent" | "driver";
 
@@ -586,7 +588,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       return cloneInitialState();
     }
 
-    const stored = window.localStorage.getItem(STORAGE_KEY);
+    const stored = demoStorage.getItem(STORAGE_KEY);
 
     if (!stored) {
       return cloneInitialState();
@@ -600,7 +602,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    demoStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
   useEffect(() => {
