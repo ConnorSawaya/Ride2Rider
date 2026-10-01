@@ -23,7 +23,9 @@ Windows double-click: `run.bat` (installs deps on first run, then starts dev ser
 
 ## Deploy
 
-Local-only demo (no backend, no env vars). Any static host works: `npm run build` then serve `dist/` (Vercel / Netlify / Railway static).
+This is a local-only demo with mock data and no backend or secrets. GitHub Pages deploys it automatically whenever changes reach `main` and can also be run manually from the Actions tab. The public demo is available at <https://connorsawaya.github.io/Ride2Rider/>; deep links are supported by the Pages fallback.
+
+The build uses `/Ride2Rider/` as its asset and router base on GitHub Pages and `/` for local development or root-domain static hosting.
 
 ## Build
 
